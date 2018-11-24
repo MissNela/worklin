@@ -47,7 +47,7 @@ async def ban(ctx,user:discord.Member):
    channel = discord.utils.get(client.get_all_channels(), name='warn-logs')
 
    
-    try:
+
         await client.ban(user)
         await client.send_message(channel, """
     :warning: Ban pro:
