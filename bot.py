@@ -38,7 +38,7 @@ async def warn(ctx, userName: discord.User, *, message:str):
     :warning: Varování pro:""" +
     userName + """
     Z dúvodu:
-    {1} :warning: """)
+    {1} :warning: """.format(userName,message))
     
 
 
