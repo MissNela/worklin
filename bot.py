@@ -41,29 +41,6 @@ async def warn(ctx, userName: discord.User, *, message:str):
     Z dúvodu:
     {1} :warning: """.format(userName,message))
     
-@client.command(pass_context=True)  
-@commands.has_permissions(ban_members=True)      
-async def ban(ctx,user:discord.Member):
-   channel = discord.utils.get(client.get_all_channels(), name='warn-logs')
-
-   
-
-    await client.ban(user)
-    await client.send_message(channel, """
-    :warning: Ban pro:
-    {0}
-   
-    Z dúvodu:
-    {1} :warning: """.format(userName,message))
-    
-    except discord.Forbidden:
-
-        await client.say('Permission denied.')
-        return
-    except discord.HTTPException:
-        await client.say('ban failed.')
-        return		 
-
 
 
 @client.command(pass_context=True)  
