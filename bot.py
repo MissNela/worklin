@@ -29,14 +29,18 @@ async def on_ready():
 
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
-async def warn(ctx, userName: discord.User, *, message:str): 
+
+async def warn(ctx, userName: discord.User, *, message:str):
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    color = discord.Color((r << 16) + (g << 8) + b)
+    channel = discord.utils.get(client.get_all_channels(), name='warn-logs')
     await client.send_message(userName, "Byl jsi varován za: **{}**".format(message))
     await client.say("""
     :warning: Varování pro:
     __**{0}**__
     **Z dúvodu:
     {1}** """.format(userName,message))
-    pass
+    await client.send_message(channel, embed=discord.Embed(color=color, description=msg + '\n Message From-' + ctx.message.author.id))
 
 
 
