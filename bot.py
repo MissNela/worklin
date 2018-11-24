@@ -31,16 +31,16 @@ async def on_ready():
 @commands.has_permissions(kick_members=True)
 
 async def warn(ctx, userName: discord.User, *, message:str):
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    color = discord.Color((r << 16) + (g << 8) + b)
+
     channel = discord.utils.get(client.get_all_channels(), name='warn-logs')
     await client.send_message(userName, "Byl jsi varován za: **{}**".format(message))
     await client.send_message(channel, """
     :warning: Varování pro:""" +
-    user.mention + """
+    userName + """
     Z dúvodu:
     {1} :warning: """)
     
 
 
 client.run(os.getenv("BOT_TOKEN"))
+#***Made by Nela!***
