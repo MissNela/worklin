@@ -40,7 +40,7 @@ async def warn(ctx, userName: discord.User, *, message:str):
     __**{0}**__
     **Z dúvodu:
     {1}** """.format(userName,message))
-    await client.send_message(channel, embed=discord.Embed(color=color)
+    await client.send_message(channel, embed=discord.Embed(color=color))
 
 
 
