@@ -38,10 +38,9 @@ async def warn(ctx, userName: discord.User, *, message:str):
     await client.say(channel, """
     :warning: Varování pro:
     __**{0}**__
-    **Z dúvodu:
-    {1}** """)
-    await client.send_message(channel, embed=discord.Embed(color=color))
-
+    Z dúvodu:
+    **__{1}__** """)
+    
 
 
 client.run(os.getenv("BOT_TOKEN"))
