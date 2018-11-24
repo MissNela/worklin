@@ -41,7 +41,58 @@ async def warn(ctx, userName: discord.User, *, message:str):
     Z dúvodu:
     {1} :warning: """.format(userName,message))
     
+@client.command(pass_context=True)  
+@commands.has_permissions(ban_members=True)      
+async def ban(ctx,user:discord.Member):
 
+    if user.server_permissions.ban_members:
+        await client.say('**He is mod/admin and i am unable to ban him/her**')
+        return
+
+    try:
+        await client.ban(user)
+        await client.send_message(channel, """
+    :warning: Ban pro:
+    {0}
+   
+    Z dúvodu:
+    {1} :warning: """.format(userName,message))
+    
+    except discord.Forbidden:
+
+        await client.say('Permission denied.')
+        return
+    except discord.HTTPException:
+        await client.say('ban failed.')
+        return		 
+
+
+
+@client.command(pass_context=True)  
+@commands.has_permissions(ban_members=True)     
+
+
+async def unban(ctx):
+    ban_list = await client.get_bans(ctx.message.server)
+
+    # Show banned users
+    await client.say("Ban list:\n{}".format("\n".join([user.name for user in ban_list])))
+
+    # Unban last banned user
+    if not ban_list:
+    	
+        await client.say('Ban list is empty.')
+        return
+    try:
+        await client.unban(ctx.message.server, ban_list[-1])
+        await client.say('Unbanned user: `{}`'.format(ban_list[-1].name))
+    except discord.Forbidden:
+        await client.say('Permission denied.')
+        return
+    except discord.HTTPException:
+        await client.say('unban failed.')
+        return		      	 		 		  
+  
 
 client.run(os.getenv("BOT_TOKEN"))
 #***Made by Nela!***
