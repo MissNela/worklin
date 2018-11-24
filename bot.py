@@ -35,7 +35,7 @@ async def warn(ctx, userName: discord.User, *, message:str):
     color = discord.Color((r << 16) + (g << 8) + b)
     channel = discord.utils.get(client.get_all_channels(), name='warn-logs')
     await client.send_message(userName, "Byl jsi varován za: **{}**".format(message))
-    await client.say("""
+    await client.say(channel, embed=discord.Embed(color=color), """
     :warning: Varování pro:
     __**{0}**__
     **Z dúvodu:
