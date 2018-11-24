@@ -37,9 +37,9 @@ async def warn(ctx, userName: discord.User, *, message:str):
     await client.send_message(userName, "Byl jsi varován za: **{}**".format(message))
     await client.send_message(channel, """
     :warning: Varování pro:
-    """{0}"""
+    {0}
     Z dúvodu:
-    """{1}""".  :warning: """)
+    {1} :warning: """)
     
 
 
