@@ -48,8 +48,8 @@ async def ban(ctx,user:discord.Member):
 
    
 
-        await client.ban(user)
-        await client.send_message(channel, """
+    await client.ban(user)
+    await client.send_message(channel, """
     :warning: Ban pro:
     {0}
    
