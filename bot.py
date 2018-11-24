@@ -44,7 +44,7 @@ async def warn(ctx, userName: discord.User, *, message:str):
 @client.command(pass_context=True)  
 @commands.has_permissions(ban_members=True)      
 async def ban(ctx,user:discord.Member):
-
+   channel = discord.utils.get(client.get_all_channels(), name='warn-logs')
     if user.server_permissions.ban_members:
         await client.say('**He is mod/admin and i am unable to ban him/her**')
         return
